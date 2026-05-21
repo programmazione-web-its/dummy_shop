@@ -3,7 +3,8 @@ import { getDiscountedPrice } from '../utils'
 import fallbackImg from '../assets/fallback.png'
 
 export default function ProductListItem({ product }) {
-  const { id, title, thumbnail, price, discountPercentage } = product || {}
+  const { id, title, thumbnail, price, discountPercentage, quantity } =
+    product || {}
 
   const finalPrice = discountPercentage
     ? getDiscountedPrice(price, discountPercentage)
@@ -32,6 +33,7 @@ export default function ProductListItem({ product }) {
             </p>
           )}
         </div>
+        <p className='mt-auto text-xs'>Qty: {quantity}</p>
       </div>
     </div>
   )

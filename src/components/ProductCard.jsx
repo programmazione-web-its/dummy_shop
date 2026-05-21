@@ -1,5 +1,9 @@
 import { getDiscountedPrice } from '../utils'
 
+import { useContext } from 'react'
+
+import CartContext from '../store/cartContext'
+
 import Button from './Button'
 
 import fallbackImg from '../assets/fallback.png'
@@ -7,6 +11,10 @@ import fallbackImg from '../assets/fallback.png'
 export default function ProductCard({ product }) {
   const { id, title, category, thumbnail, price, discountPercentage, stock } =
     product || {}
+
+  const cartCtx = useContext(CartContext)
+
+  const { addToCart } = cartCtx
 
   const finalPrice = discountPercentage
     ? getDiscountedPrice(price, discountPercentage)
@@ -44,7 +52,20 @@ export default function ProductCard({ product }) {
         </div>
         <div className='flex justify-between flex-wrap gap-3 mt-3'>
           {stock > 0 ? (
-            <Button classes='grow lg:basis-[45%]'>BUY</Button>
+            <Button
+              onClick={() =>
+                addToCart({
+                  id,
+                  title,
+                  thumbnail,
+                  price,
+                  discountPercentage,
+                })
+              }
+              classes='grow lg:basis-[45%]'
+            >
+              BUY
+            </Button>
           ) : (
             <p className='bg-ink px-3 py-1 text-center text-warm-white inline-block'>
               Sold out
@@ -53,7 +74,7 @@ export default function ProductCard({ product }) {
           <Button
             classes='grow lg:basis-[45%]'
             type='outlined'
-            href={`/products/${id}`}
+            to={`/product/${id}`}
           >
             VIEW
           </Button>

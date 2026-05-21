@@ -2,13 +2,23 @@ import classNames from 'classnames'
 import { XCircleIcon } from '@phosphor-icons/react'
 import { SmileySadIcon } from '@phosphor-icons/react'
 
+import { useContext } from 'react'
+
+import CartContext from '../store/cartContext'
+
 import Button from './Button'
 import ProductListItem from './ProductListItem'
 
-export default function CartDrawer({ products, isOpen = false }) {
+export default function CartDrawer() {
+  const cartCtx = useContext(CartContext)
+
+  const { products, isOpen, openDrawer } = cartCtx
+
   const cartTotal =
     products?.length > 0
-      ? products.reduce((acc, prod) => acc + prod.price, 0).toFixed(2)
+      ? products
+          .reduce((acc, prod) => acc + prod.price * prod.quantity, 0)
+          .toFixed(2)
       : null
   return (
     <div
@@ -22,7 +32,7 @@ export default function CartDrawer({ products, isOpen = false }) {
     >
       <div className='flex justify-between items-center px-6'>
         <h2 className='text-xl uppercase'>cart</h2>
-        <Button type='icon'>
+        <Button type='icon' onClick={() => openDrawer(false)}>
           <XCircleIcon size={24} />
         </Button>
       </div>
