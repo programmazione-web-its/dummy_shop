@@ -1,10 +1,21 @@
 import { getDiscountedPrice } from '../utils'
 
+import { TrashIcon } from '@phosphor-icons/react'
+
+import { useContext } from 'react'
+
+import CartContext from '../store/cartContext'
+
+import Button from './Button'
 import fallbackImg from '../assets/fallback.png'
 
 export default function ProductListItem({ product }) {
   const { id, title, thumbnail, price, discountPercentage, quantity } =
     product || {}
+
+  const cartCtx = useContext(CartContext)
+
+  const { removeFromCart } = cartCtx
 
   const finalPrice = discountPercentage
     ? getDiscountedPrice(price, discountPercentage)
@@ -33,7 +44,12 @@ export default function ProductListItem({ product }) {
             </p>
           )}
         </div>
-        <p className='mt-auto text-xs'>Qty: {quantity}</p>
+        <div className='flex justify-between items-center mt-auto '>
+          <p className='text-xs'>Qty: {quantity}</p>
+          <Button type='icon' onClick={() => removeFromCart(id)}>
+            <TrashIcon size={16} />
+          </Button>
+        </div>
       </div>
     </div>
   )

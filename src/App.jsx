@@ -38,11 +38,16 @@ function App() {
     })
   }
 
+  function removeFromCart(id) {
+    setCartProducts((prev) => prev.filter((el) => el.id !== id))
+  }
+
   const cartCtxValue = {
     products: cartProducts,
     isOpen: openDrawer,
     openDrawer: setOpenDrawer,
     addToCart,
+    removeFromCart,
   }
 
   return (

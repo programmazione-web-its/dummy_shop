@@ -14,7 +14,8 @@ export default function Button({ type = 'primary', children, ...rest }) {
           'border border-terra text-terra hover:bg-terra hover:text-warm-white':
             type === 'outlined',
           'w-full': rest.fullWidth,
-          'flex items-center justify-center p-0': type === 'icon',
+          'flex items-center justify-center p-0 hover:opacity-60':
+            type === 'icon',
           'px-3 py-1': type !== 'icon',
         },
         rest.classes,

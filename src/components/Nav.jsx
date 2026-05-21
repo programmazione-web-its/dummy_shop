@@ -4,13 +4,28 @@ export default function Nav() {
     <nav>
       <ul className='flex gap-6 font-serif text-forest text-2xl'>
         <li>
-          <NavLink to='/beauty'>Beauty</NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? 'active' : '')}
+            to='/beauty'
+          >
+            Beauty
+          </NavLink>
         </li>
         <li>
-          <NavLink to='/fragrances'>Fragrances</NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? 'active' : '')}
+            to='/fragrances'
+          >
+            Fragrances
+          </NavLink>
         </li>
         <li>
-          <NavLink to='/home-decorations'>Home decorations</NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? 'active' : '')}
+            to='/home-decorations'
+          >
+            Home decorations
+          </NavLink>
         </li>
       </ul>
     </nav>
