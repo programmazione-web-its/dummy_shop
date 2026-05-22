@@ -2,14 +2,16 @@ import { ShoppingCartIcon, UserCircleIcon } from '@phosphor-icons/react'
 
 import { Link } from 'react-router-dom'
 
-import { useState } from 'react'
+import { useContext } from 'react'
+import CartContext from '../store/cart-context'
 
-import Nav from './Nav'
 import Button from './Button'
 import CartDrawer from './CartDrawer'
+import Nav from './Nav'
 
-export default function Header({ products }) {
-  const [openCart, setOpenCart] = useState(false)
+export default function Header() {
+  const cartCtx = useContext(CartContext)
+  const { openDrawer } = cartCtx
 
   return (
     <>
@@ -25,14 +27,19 @@ export default function Header({ products }) {
             <Button type='icon' href='/login'>
               <UserCircleIcon size={24} />
             </Button>
-            <Button type='icon' onClick={() => setOpenCart(!openCart)}>
+            <Button
+              classes='relative'
+              type='icon'
+              onClick={() => openDrawer(true)}
+            >
+              3
               <ShoppingCartIcon size={24} />
             </Button>
           </div>
         </div>
       </header>
 
-      <CartDrawer products={products} isOpen={openCart} />
+      <CartDrawer />
     </>
   )
 }

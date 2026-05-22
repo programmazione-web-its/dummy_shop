@@ -1,5 +1,9 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
+import { useState } from 'react'
+
+import CartContext from './store/cart-context'
+
 import Homepage from './pages/Homepage'
 import Beauty from './pages/Beauty'
 import Account from './pages/Account'
@@ -37,7 +41,19 @@ const router = createBrowserRouter([
 ])
 
 function App() {
-  return <RouterProvider router={router} />
+  const [cartProducts, setCartProducts] = useState([])
+  const [drawerOpen, setDrawerOpen] = useState(false)
+
+  const initialCtx = {
+    products: cartProducts,
+    isOpen: drawerOpen,
+    openDrawer: setDrawerOpen,
+  }
+  return (
+    <CartContext.Provider value={initialCtx}>
+      <RouterProvider router={router} />
+    </CartContext.Provider>
+  )
 }
 
 export default App
