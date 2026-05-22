@@ -1,16 +1,29 @@
+import { NavLink } from 'react-router-dom'
+
 export default function Nav() {
   return (
     <nav>
       <ul className='flex gap-6 font-serif text-forest text-2xl'>
         <li>
-          <a href='/beauty'>Beauty</a>
+          <NavLink
+            className={({ isActive }) => (isActive ? 'active' : '')}
+            to='/beauty'
+          >
+            Beauty
+          </NavLink>
         </li>
         <li>
-          <a href='/fragrances'>Fragrances</a>
+          <NavLink
+            className={({ isActive }) => (isActive ? 'active' : '')}
+            to='/frangrances'
+          >
+            Fragrances
+          </NavLink>
         </li>
+        {/*
         <li>
-          <a href='/home-decorations'>Home decorations</a>
-        </li>
+          <NavLink to='/home-decorations'>Home decorations</NavLink>
+        </li> */}
       </ul>
     </nav>
   )

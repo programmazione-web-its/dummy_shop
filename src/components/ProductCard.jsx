@@ -53,7 +53,7 @@ export default function ProductCard({ product }) {
           <Button
             classes='grow lg:basis-[45%]'
             type='outlined'
-            href={`/products/${id}`}
+            to={`/products/${id}`}
           >
             VIEW
           </Button>

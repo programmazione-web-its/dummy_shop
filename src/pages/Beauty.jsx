@@ -1,6 +1,5 @@
 import data from '../data/products.json'
 
-import BasicLayout from '../layouts/BasicLayout'
 import ProductsGrid from '../components/ProductsGrid'
 
 export default function Beauty() {
@@ -9,8 +8,11 @@ export default function Beauty() {
   const beautyProducts = products?.filter((el) => el.category === 'beauty')
 
   return (
-    <BasicLayout products={beautyProducts}>
+    <>
+      <div className='container'>
+        <h1 className='text-3xl uppercase font-bold'>Beauty products</h1>
+      </div>
       <ProductsGrid products={beautyProducts} />
-    </BasicLayout>
+    </>
   )
 }

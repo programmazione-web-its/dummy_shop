@@ -1,5 +1,7 @@
 import { ShoppingCartIcon, UserCircleIcon } from '@phosphor-icons/react'
 
+import { Link } from 'react-router-dom'
+
 import { useState } from 'react'
 
 import Nav from './Nav'
@@ -13,9 +15,9 @@ export default function Header({ products }) {
     <>
       <header className='sticky top-0 py-4 z-[99] bg-cream '>
         <div className='container flex justify-between items-end gap-6'>
-          <a href='/'>
+          <Link to='/'>
             <h1 className='text-terra uppercase text-3xl'>My dummy shop</h1>
-          </a>
+          </Link>
           <div className='ml-auto'>
             <Nav />
           </div>
@@ -29,6 +31,7 @@ export default function Header({ products }) {
           </div>
         </div>
       </header>
+
       <CartDrawer products={products} isOpen={openCart} />
     </>
   )

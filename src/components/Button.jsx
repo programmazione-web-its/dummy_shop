@@ -1,6 +1,7 @@
 import classNames from 'classnames'
+import { Link } from 'react-router-dom'
 export default function Button({ type = 'primary', children, ...rest }) {
-  const Tag = rest.href ? 'a' : 'button'
+  let Tag = rest.to ? Link : 'button'
 
   return (
     <Tag
