@@ -4,6 +4,7 @@ import ProductsGrid from '../components/ProductsGrid'
 
 export default function Fragrances() {
   const { products } = data || {}
+
   const frangrances = products.filter((el) => el.category === 'fragrances')
 
   return (

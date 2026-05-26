@@ -49,3 +49,7 @@ nav ul li:hover::after {
 nav ul li a.active {
   @apply text-terra;
 }
+
+input {
+  @apply border border-forest rounded-md py-2 px-3;
+}

@@ -16,6 +16,7 @@ export default function Nav() {
           <NavLink
             className={({ isActive }) => (isActive ? 'active' : '')}
             to='/frangrances'
+            state={{ mioStato: 'Mio valore dello stato' }}
           >
             Fragrances
           </NavLink>

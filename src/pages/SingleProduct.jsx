@@ -10,6 +10,9 @@ export default function SingleProduct() {
 
   // const productArr = data.products.filter((el) => el.id == productId)
   // const { id, name, description, thumbnail } = productArr[0] || {}
+  if (!product) {
+    return <h1>Product not found</h1>
+  }
   return (
     <div
       data-id={id}
