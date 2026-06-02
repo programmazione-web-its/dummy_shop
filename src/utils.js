@@ -13,3 +13,14 @@ export function addItemToCart(cart, item) {
 export function removeItemFromCart(cart, id) {
   return cart.filter((el) => el.id !== id)
 }
+
+export function updateItemQuantity(cart, itemId, action) {
+  const idx = cart.findIndex((el) => el.id === itemId)
+  if (idx === -1) return cart
+  const delta = action === 'add' ? 1 : -1
+  const updated = { ...cart[idx], quantity: cart[idx].quantity + delta }
+  if (updated.quantity <= 0) {
+    return [...cart.slice(0, idx), ...cart.slice(idx + 1)]
+  }
+  return [...cart.slice(0, idx), updated, ...cart.slice(idx + 1)]
+}
