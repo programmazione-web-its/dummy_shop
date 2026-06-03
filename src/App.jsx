@@ -4,6 +4,8 @@ import { useState } from 'react'
 
 import CartContext from './store/cart-context'
 
+import { addItemToCart } from './utils'
+
 import Homepage from './pages/Homepage'
 import Beauty from './pages/Beauty'
 import Account from './pages/Account'
@@ -65,10 +67,18 @@ function App() {
   const [cartProducts, setCartProducts] = useState([])
   const [drawerOpen, setDrawerOpen] = useState(false)
 
+  function addItem(prod) {
+    setCartProducts((prev) => addItemToCart(prev, prod))
+  }
+
+  function removeItem(prodId) {}
+
   const initialCtx = {
     products: cartProducts,
     isOpen: drawerOpen,
     openDrawer: setDrawerOpen,
+    addItem,
+    removeItem,
   }
 
   return (
