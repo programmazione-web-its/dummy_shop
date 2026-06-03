@@ -11,6 +11,8 @@ import BasicLayout from './layouts/BasicLayout'
 import Fragrances from './pages/Fragrances'
 import SingleProduct from './pages/SingleProduct'
 import UserProfile from './pages/UserProfile'
+import SearchResults from './pages/SearchResults'
+import NotFound from './pages/NotFound'
 
 const router = createBrowserRouter([
   {
@@ -46,6 +48,14 @@ const router = createBrowserRouter([
       {
         path: '/account/user-profile',
         element: <UserProfile />,
+      },
+      {
+        path: 'results',
+        element: <SearchResults />,
+      },
+      {
+        path: '*',
+        element: <NotFound />,
       },
     ],
   },

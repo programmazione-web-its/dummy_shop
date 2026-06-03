@@ -4,11 +4,6 @@ import { useRef, useState } from 'react'
 
 import Button from '../components/Button'
 
-const user = {
-  username: 'Pippo',
-  password: 'Topolinia',
-}
-
 export default function LoginForm() {
   const navigate = useNavigate()
 

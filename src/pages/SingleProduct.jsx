@@ -1,11 +1,30 @@
-import data from '../data/products.json'
+import { useState, useEffect } from 'react'
 
 import { useParams } from 'react-router-dom'
 
 export default function SingleProduct() {
   const { productId } = useParams()
+  const [product, setProduct] = useState()
 
-  const product = data.products.find((el) => el.id == productId)
+  useEffect(() => {
+    if (!productId) return
+    async function getProduct() {
+      try {
+        const res = await fetch(`https://dummyjson.com/products/${productId}`)
+        if (!res.ok) {
+          throw new Error()
+        }
+
+        const data = await res.json()
+        setProduct(data)
+      } catch (err) {
+        console.error(err)
+      }
+    }
+
+    getProduct()
+  }, [productId])
+
   const { id, title, description, thumbnail } = product || {}
 
   // const productArr = data.products.filter((el) => el.id == productId)
